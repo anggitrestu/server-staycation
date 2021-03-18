@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 
 // Connect to MongoDB via Mongoose
 seeder.connect(
-  'mongodb+srv://anggitrestu:Ojolali18@cluster0.pug4c.mongodb.net/db_staycation?retryWrites=true&w=majority',
+  'mongodb://anggitrestu:Ojolali18@cluster0-shard-00-00.pug4c.mongodb.net:27017,cluster0-shard-00-01.pug4c.mongodb.net:27017,cluster0-shard-00-02.pug4c.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-103uau-shard-0&authSource=admin&retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
     useCreateIndex: true,
