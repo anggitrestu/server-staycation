@@ -9,12 +9,15 @@ const flash = require('connect-flash');
 const multer = require('multer');
 // import mongoose
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/db_staycation', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-});
+mongoose.connect(
+  'mongodb+srv://anggitrestu:Ojolali18@cluster0.pug4c.mongodb.net/db_staycation?retryWrites=true&w=majority',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+  }
+);
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
