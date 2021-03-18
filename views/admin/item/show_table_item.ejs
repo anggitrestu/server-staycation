@@ -1,0 +1,77 @@
+<div
+  class="tab-pane fade show active"
+  id="show-item"
+  role="tabpanel"
+  aria-labelledby="home-tab"
+>
+  <h1 class="m-0 font-weight-bold text-primary mt-4">Item</h1>
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Item</h6>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Title</th>
+              <th>Price</th>
+              <th>Country</th>
+              <th>City</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% item.forEach(function(item, index ) {%>
+            <tr>
+              <td><%= index+1 %></td>
+              <td><%= item.title %></td>
+              <td><%= item.price %></td>
+              <td><%= item.country %></td>
+              <td><%= item.city %></td>
+              <td>
+                <form
+                  action="/admin/item/<%=item._id%>/delete?_method=DELETE"
+                  method="POST"
+                >
+                  <a
+                    href="/admin/item/show-image/<%=item._id%>"
+                    class="btn-sm btn-info btn-circle"
+                  >
+                    <i class="fas fa-image"></i>
+                  </a>
+                  <a
+                    href="/admin/item/<%= item.id %>"
+                    class="btn-sm btn-warning btn-circle"
+                  >
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <button
+                    type="submit"
+                    class="btn btn-sm btn-danger btn-circle"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </button>
+                  <a
+                    href="/admin/item/show-detail-item/<%= item.id %>"
+                    class="btn-sm btn-success btn-circle"
+                  >
+                    <i class="fas fa-plus"></i>
+                  </a>
+                </form>
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,116 @@
+<div
+  class="tab-pane fade show"
+  id="show-activity"
+  role="tabpanel"
+  aria-labelledby="home-tab"
+>
+  <h1 class="m-0 font-weight-bold text-primary mt-4">Activity</h1>
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Activity</h6>
+    </div>
+
+    <div class="row">
+      <div class="col-md-5">
+        <form
+          action="/admin/item/add/activity"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <div class="modal-body">
+            <div class="form-group">
+              <input type="hidden" name="itemId" value="<%= itemId %>" />
+              <label for="nameBank">Nama</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                id="name"
+                name="name"
+                placeholder="Enter name"
+                required
+              />
+              <label for="nomorRekening">Type</label>
+              <input
+                type="text"
+                class="form-control mb-2"
+                id="type"
+                name="type"
+                placeholder="Enter type"
+                required
+              />
+              <label for="imageUrl">Image</label>
+              <input
+                type="file"
+                class="form-control mb-2"
+                id="imageUrl"
+                name="imageUrl"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-7 pt-4 pr-4">
+        <div class="table-responsive">
+          <table
+            class="table table-bordered"
+            id="dataTableActivity"
+            width="100%"
+            cellspacing="0"
+          >
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Image Url</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% activity.forEach(function(activity, index ) {%>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= activity.name %></td>
+                <td><%= activity.type %></td>
+                <td class="text-center">
+                  <img
+                    style="width: 30px"
+                    src="http://localhost:3000/<%= activity.imageUrl %>"
+                    alt=""
+                  />
+                </td>
+                <td>
+                  <form
+                    action="/admin/item/<%= itemId %>/activity/<%= activity._id %>?_method=DELETE"
+                    method="POST"
+                  >
+                    <a
+                      href="javascript:void()"
+                      type="button"
+                      class="btn-sm btn-warning btn-circle button-update"
+                      data-id="<%= activity._id %>"
+                      data-name="<%= activity.name %>"
+                      data-type="<%= activity.type %>"
+                      data-image="http://localhost:3000/<%= activity.imageUrl %>"
+                    >
+                      <i class="fas fa-edit"></i>
+                    </a>
+                    <button
+                      type="submit"
+                      class="btn btn-sm btn-danger btn-circle"
+                    >
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
