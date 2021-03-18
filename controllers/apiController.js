@@ -117,7 +117,7 @@ module.exports = {
       const {
         idItem,
         duration,
-
+        //price
         bookingStartDate,
         bookingEndDate,
         firstName,
@@ -150,7 +150,7 @@ module.exports = {
       const item = await Item.findOne({ _id: idItem });
       console.log(item);
       if (!item) {
-        return res.status(404) / json({ message: 'Item Not Found' });
+        return res.status(404).json({ message: 'Item Not Found' });
       }
 
       item.sumBooking += 1;
@@ -190,6 +190,7 @@ module.exports = {
       res.status(201).json({ message: 'success booking', booking });
     } catch (error) {
       console.log(error.message);
+      res.status(500).json({ message: 'internal server error' });
     }
   },
 };
