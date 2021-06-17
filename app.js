@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+var cors = require('cors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -40,6 +41,7 @@ app.use(
     cookie: { maxAge: 60000 },
   })
 );
+app.use(cors());
 app.use(flash());
 app.use(logger('dev'));
 app.use(express.json());
